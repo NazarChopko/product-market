@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ Product Market
 
-## Getting Started
+> Веб-застосунок для перегляду та адміністрування продуктів
 
-First, run the development server:
+## 🔧 Використані технології
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- ⚛️ **React**
+- ⚡️ **Next.js**
+- 💅 **Tailwind CSS**
+- 🔗 **Axios**
+- 🧠 **Redux Toolkit**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Маршрути
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Шлях | Опис |
+|------|------|
+| `/` | Редіректить на `/products` |
+| `/products` | Сторінка списку продуктів з пагінацією, фільтрацією, сортуванням |
+| `/products/[id]` | Сторінка окремого продукту |
+| `/login` | Сторінка входу |
+| `/admin_dashboard` | Панель адміністратора з можливістю CRUD-операцій |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 Деталі реалізації
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 🔁 **SSR (Server-Side Rendering)** використовується для `/products` та `/products/[id]`.  
+  Це гарантує, що користувач завжди бачить **актуальні дані**, адже продукти можуть **часто змінюватись** (додаватись, редагуватись або видалятись).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 📚 **Серверна пагінація**, пошук і сортування реалізовані на маршруті `/products`.
 
-## Deploy on Vercel
+- 🔒 **Захист маршрутів**:
+  - Неавторизований користувач не зможе перейти на `/admin_dashboard`.
+  - Якщо авторизований користувач спробує перейти на `/login`, його буде перенаправлено на `/admin_dashboard`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Інструкція запуску
+
+1. Клонувати репозиторій:
+
+   ```bash
+   git clone https://github.com/NazarChopko/product-market.git
+   cd product-market
+   ```
+
+2. Встановити залежності:
+
+   ```bash
+   npm install
+   ```
+
+3. Запустити застосунок:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Відкрити в браузері:
+
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## 🧭 Навігація по застосунку
+
+- Ви одразу потрапите на сторінку `/products`.
+- Тут можна:
+  - Переглядати продукти по сторінках (пагінація)
+  - Сортувати за алфавітом: кнопки `asc` (від А до Я) та `desc` (від Я до А)
+  - Шукати за назвою: введіть текст у поле та натисніть `Search`
+  - Скинути пошук: натисніть `Cancel`
+
+- При кліку на картку продукту — перехід на сторінку з детальною інформацією.
+
+---
+
+## 🔐 Авторизація
+
+- Натисніть на кнопку `Log in` у правому верхньому куті.
+- Використайте облікові дані:
+
+  ```
+  username: emily
+  password: emilypass
+  ```
+
+- Після входу вас буде перенаправлено на `/admin_dashboard`, де доступні операції створення, редагування та видалення продуктів.
+
+- Для виходу натисніть `Logout` у верхньому правому куті.
+
+---
+
+## 🖥️ Примітка
+
+> Веб-застосунок орієнтований лише на **десктопну версію**.
+
+ 
